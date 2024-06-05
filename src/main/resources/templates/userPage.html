@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Admin panel</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <td th:text="${user.getUserName()}"/>
+            <td th:text="'with roles: ' + ${#strings.arrayJoin(user.getRoles().toArray(), ', ')}"/>
+        </a>
+
+        <a type="submit" class="justify-content-end nav-link text-muted" th:href="@{/logout}">Logout</a>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row align-items-start">
+        <div style="flex: 0 0 auto; width: 17%">
+            <div class="flex-column p-3 h-100">
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <a th:href="@{/admin}" class="nav-link link-body-emphasis ps-5">
+                            Admin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link active ps-5" aria-current="page">
+                            User
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-8 mt-3 bg-light text-dark">
+            <H3>User information-page</H3>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                </tr>
+                </thead>
+                <tbody>
+                <td th:text="${user.getId()}"/>
+                <td th:text="${user.getFirstName()}"/>
+                <td th:text="${user.getLastName()}"/>
+                <td th:text="${user.getAge()}"/>
+                <td th:text="${user.getUserName()}"/>
+                <td th:text="${#strings.arrayJoin(user.getRoles().toArray(), ', ')}"/>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
